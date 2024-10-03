@@ -1,14 +1,16 @@
 import React from 'react';
-import './styles.css'
+import './global.css';
+import {Post} from './Post';
+import { Header } from './components/header';
 
  function App() {
   return (
     <div>
-    <Header/>
-    <Post
-    author="Rasyssa Garcia"
-    content="çqlkwhwjuhe1i-o'ojhuhiqjhd"
-    />
+      <Header />
+      <Post
+      author="Rasyssa Garcia"
+      content="çqlkwhwjuhe1i-o'ojhuhiqjhd"
+      />
 
   </div>
   )

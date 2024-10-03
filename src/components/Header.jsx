@@ -1,5 +1,11 @@
+import styles from './Header.module.css'
+
+console.log(styles);
 export function Header() {
     return (
-        <strong className="header">Ignite Feed</strong>
+        <header className= {styles.header}>
+        <strong >Ignite Feed</strong> 
+        </header>
+    
     );
 }
