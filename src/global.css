@@ -24,3 +24,12 @@ body {
  color: var(--gray-300);
  -webkit-font-smoothing: antialiased;
 }
+
+
+/* é uma instrução */
+body, input, textarea, button {
+    font-family: 'Roboto', sans-serif; /* se a fonte escolhida não conseguir ser carregada vai 
+    carregar a padrão do sistema que vai depdender do computador*/
+    font-weight: 400;
+    font-size: 1rem;
+}
