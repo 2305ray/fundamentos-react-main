@@ -21,10 +21,7 @@ import './global.css';
               author='diego fernandes'
               content='ijfoik0plklkjmihufywuj9okjih7gbuqjoi97y8uihij' />
 
-            <Post
-              author='diego fernandes'
-              content='ijfoik0plklkjmihufywuj9okjih7gbuqjoi97y8uihij' />
-
+          
 
           </main>
      </div>
