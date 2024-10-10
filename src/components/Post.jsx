@@ -1,5 +1,5 @@
 import { format, formatDistanceToNow } from 'date-fns'; 
-import ptBR from 'date-fns/locale/pt-BR'
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
@@ -14,7 +14,7 @@ export function Post({ author, publishedAt, content }) {
     const [newCommentText, setNewCommentText] = useState('');
 
     function handleNewCommentChange(event) {
-        event.target.setCustomValidity('')
+        event.target.setCustomValidity('');
         setNewCommentText(event.target.value);
     }
 
@@ -27,8 +27,8 @@ export function Post({ author, publishedAt, content }) {
         addSuffix: true,
     });
 
-    function handleNewCommentInvalid(){
-        event.target.setCustomValidity('Esse campo é obrigatório')
+    function handleNewCommentInvalid(event){
+        event.target.setCustomValidity('Esse campo é obrigatório');
     }
 
     function deleteComment(commentToDelete) {
@@ -38,11 +38,13 @@ export function Post({ author, publishedAt, content }) {
 
     function handleCreateNewComment(event) {
         event.preventDefault();
-        setComments([...comments, newCommentText]);
-        setNewCommentText('');
+        if (newCommentText.trim()) { // Verifique se o comentário não está vazio
+            setComments([...comments, newCommentText]);
+            setNewCommentText('');
+        }
     }
 
-        const isNewCommentEmpty = newCommentText.length == 0
+    const isNewCommentEmpty = newCommentText.length === 0; // Use ===
 
     return (
         <article className={styles.post}>
@@ -66,6 +68,7 @@ export function Post({ author, publishedAt, content }) {
                     } else if (line.type === 'link') {
                         return <p key={line.content}><a href=''>{line.content}</a></p>;
                     }
+                    return null; // Para evitar warnings
                 })}
             </div>
 
@@ -83,15 +86,16 @@ export function Post({ author, publishedAt, content }) {
 
                 <footer>
                     <button type='submit' disabled={isNewCommentEmpty}>
-                        Publicar</button>
+                        Publicar
+                    </button>
                 </footer>
             </form> 
 
             <div className={styles.commentList}>
-                {comments.map(comment => {
+                {comments.map((comment, index) => {
                     return (
                         <Comment
-                            key={comment}
+                            key={`${comment}-${index}`} // Uso de chave única
                             content={comment}
                             onDeleteComment={deleteComment}
                         />
